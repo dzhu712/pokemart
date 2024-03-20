@@ -1,7 +1,7 @@
-<h1 class="text-center">Pokemon Cards</h1>
+<h1 class="text-center mb-5">Pokemon Cards</h1>
 
 <% if @pokemon_cards.any? %>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center gy-4">
     <% @pokemon_cards.each do |pokemon_card| %>
       <%= render partial: 'shared/pokemon_card', locals: { pokemon_card: pokemon_card } %>
     <% end %>

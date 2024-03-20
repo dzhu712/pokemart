@@ -3,11 +3,12 @@ class PokemonCardsController < ApplicationController
     @pokemon_cards = PokemonCard.all
 
     if params[:search].present?
-      @pokemon_cards = @pokemon_cards.where("pokemon_cards.name LIKE ?", "%#{params[:search]}%")
+      search_query = "%#{params[:search]}%"
+      @pokemon_cards = @pokemon_cards.where("pokemon_cards.name LIKE ? OR pokemon_cards.description LIKE ?", search_query, search_query)
     end
 
     if params[:type].present?
-      @pokemon_cards = @pokemon_cards.joins(:types).where(types: { name: params[:type] })
+      @pokemon_cards = @pokemon_cards.joins(:type).where(types: { name: params[:type] })
     end
 
     @pokemon_cards = @pokemon_cards.page(params[:page]).per(15)

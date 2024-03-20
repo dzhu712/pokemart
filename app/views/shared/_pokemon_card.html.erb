@@ -1,10 +1,11 @@
 <div class="col-md-4">
   <div class="thumbnail d-flex flex-column align-items-center">
-    <%= image_tag pokemon_card.image, class: 'img-responsive', alt: pokemon_card.name %>
+    <%= image_tag pokemon_card.image, class: 'img-responsive w-75', alt: pokemon_card.name %>
     <div class="caption">
       <%= link_to pokemon_card_path(pokemon_card) do %>
         <h3><%= pokemon_card.name.capitalize %></h3>
       <% end %>
     </div>
+    <p>Price: $<%= '%.2f' % pokemon_card.price %></p>
   </div>
 </div>
