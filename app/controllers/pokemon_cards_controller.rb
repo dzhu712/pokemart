@@ -11,6 +11,15 @@ class PokemonCardsController < ApplicationController
       @pokemon_cards = @pokemon_cards.joins(:type).where(types: { name: params[:type] })
     end
 
+    if params[:filter].present?
+      case params[:filter]
+      when "new"
+        @pokemon_cards = @pokemon_cards.where("created_at >= ?", 3.hour.ago)
+      when "recently_updated"
+        @pokemon_cards = @pokemon_cards.where("updated_at >= ? AND created_at < ?", 3.hour.ago, 3.hour.ago)
+      end
+    end
+
     @pokemon_cards = @pokemon_cards.page(params[:page]).per(15)
   end
 
