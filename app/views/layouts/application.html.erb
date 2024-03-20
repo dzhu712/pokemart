@@ -24,6 +24,16 @@
             <li>
               <%= link_to "Pokemon Cards", pokemon_cards_path, class: "nav-link" %>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Types
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% Type.all.each do |type| %>
+                  <li><%= link_to type.name.capitalize, type_path(type) %></li>
+                <% end %>
+              </ul>
+            </li>
           </ul>
 
           <form class="form-inline ml-auto">
@@ -45,6 +55,17 @@
         </div>
       </div>
     </nav>
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Dropdown button
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+      </ul>
+    </div>
 
     <div class="container py-5">
       <%= yield %>
