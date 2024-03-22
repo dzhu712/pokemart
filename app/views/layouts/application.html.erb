@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Pokemart</title>
+    <title>PokeMart</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,51 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <%= link_to "PokeMart", root_path, class: "navbar-brand" %>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+          <ul class="navbar-nav">
+            <li>
+              <%= link_to "Cards", pokemon_cards_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Types</a>
+              <div class="dropdown-menu">
+                <% Type.all.each do |type| %>
+                  <%= link_to type.name.capitalize, type_path(type), class: "dropdown-item" %>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+
+          <form class="form-inline">
+            <div class="input-group">
+              <input type="text" class="form-control" name="search" placeholder="Search for Pokemon Card" aria-label="Search" value="<%= params[:search] %>">
+
+              <div class="input-group-append">
+                <select class="form-select rounded-0" name="type">
+                  <option value="" <%= "selected" if params[:type].blank? %>>All Types</option>
+                  <% Type.all.each do |type| %>
+                    <option value="<%= type.name %>" <%= "selected" if params[:type] == type.name %>><%= type.name.capitalize %></option>
+                  <% end %>
+                </select>
+              </div>
+
+              <button class="btn btn-success">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-5">
+      <%= yield %>
+    </div>
   </body>
 </html>
