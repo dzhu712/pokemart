@@ -10,10 +10,10 @@
 
     <p>Price: $<%= '%.2f' % pokemon_card.price %></p>
 
-    <% if pokemon_card.recently_updated? %>
-      <span class="badge bg-warning">Updated</span>
-    <% elsif pokemon_card.new? %>
+    <% if pokemon_card.new? %>
       <span class="badge bg-primary">New</span>
+    <% elsif pokemon_card.recently_updated? %>
+      <span class="badge bg-warning">Updated</span>
     <% end %>
   </div>
 </div>

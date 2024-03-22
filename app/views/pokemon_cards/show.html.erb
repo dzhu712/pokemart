@@ -12,7 +12,7 @@
       <%= types.join(', ').html_safe %>
     </p>
     <p><b>Description:</b> <%= @pokemon_card.description.present? ? @pokemon_card.description : "N/A" %></p>
-    <p><b>Stock Quantity:</b> <%= @pokemon_card.stock_quantity %></p>
     <p><b>Price:</b> $<%= '%.2f' % @pokemon_card.price %></p>
+    <p><b>Stock Quantity:</b> <%= @pokemon_card.stock_quantity %></p>
   </div>
 </div>
