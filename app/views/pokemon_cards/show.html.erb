@@ -6,8 +6,12 @@
   </div>
 
   <div class="col-md-4 px-5">
-    <p><b>Type:</b> <%= @pokemon_card.type.name %></p>
-    <p><b>Description:</b> <%= @pokemon_card.description %></p>
+    <p>
+      <b>Type:</b>
+      <% types = @pokemon_card.types.map { |type| link_to(type.name, type_path(type)) } %>
+      <%= types.join(', ').html_safe %>
+    </p>
+    <p><b>Description:</b> <%= @pokemon_card.description.present? ? @pokemon_card.description : "N/A" %></p>
     <p><b>Stock Quantity:</b> <%= @pokemon_card.stock_quantity %></p>
     <p><b>Price:</b> $<%= '%.2f' % @pokemon_card.price %></p>
   </div>

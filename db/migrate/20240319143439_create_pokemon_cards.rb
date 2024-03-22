@@ -5,7 +5,6 @@ class CreatePokemonCards < ActiveRecord::Migration[7.1]
       t.text :description
       t.decimal :price
       t.integer :stock_quantity
-      t.references :type, null: false, foreign_key: true
 
       t.timestamps
     end

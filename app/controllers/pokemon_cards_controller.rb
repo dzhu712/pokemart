@@ -8,7 +8,7 @@ class PokemonCardsController < ApplicationController
     end
 
     if params[:type].present?
-      @pokemon_cards = @pokemon_cards.joins(:type).where(types: { name: params[:type] })
+      @pokemon_cards = @pokemon_cards.joins(:types).where(types: { name: params[:type] })
     end
 
     if params[:filter].present?
