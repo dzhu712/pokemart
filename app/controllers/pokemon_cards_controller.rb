@@ -2,13 +2,16 @@ class PokemonCardsController < ApplicationController
   def index
     @pokemon_cards = PokemonCard.all
 
+    @pokemon_cards = @pokemon_cards.where("stock_quantity > 0")
+
     if params[:search].present?
       search_query = "%#{params[:search]}%"
       @pokemon_cards = @pokemon_cards.where("pokemon_cards.name LIKE ? OR pokemon_cards.description LIKE ?", search_query, search_query)
     end
 
     if params[:type].present?
-      @pokemon_cards = @pokemon_cards.joins(:types).where(types: { name: params[:type] })
+      type = Type.find_by(name: params[:type])
+      @pokemon_cards = @pokemon_cards.joins(:types).where(types: { id: type.id }) if type
     end
 
     if params[:filter].present?
@@ -25,6 +28,7 @@ class PokemonCardsController < ApplicationController
 
   def show
     @pokemon_card = PokemonCard.find(params[:id])
+    render file: "#{Rails.root}/public/404.html", status: :not_found, layout: false unless @pokemon_card.stock_quantity > 0
   rescue ActiveRecord::RecordNotFound
     render file: "#{Rails.root}/public/404.html", status: :not_found, layout: false
   end
