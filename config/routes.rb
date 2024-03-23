@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :types, only: [:show]
 
   resources :about_pages, only: [:index]
+  resources :contacts, only: [:index]
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
