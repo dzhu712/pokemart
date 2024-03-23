@@ -1,7 +1,13 @@
 <h1 class="text-center mb-4"><%= @pokemon_card.name.capitalize %></h1>
 
-<div class="row justify-content-center gap-4">
+<div class="row justify-content-center align-items-center gap-4">
   <div class="col-md-4 text-center">
+    <% if @pokemon_card.new? %>
+      <span class="badge bg-primary rounded-0 rounded-top w-50">New</span>
+    <% elsif @pokemon_card.recently_updated? %>
+      <span class="badge bg-warning rounded-0 rounded-top w-50">Updated</span>
+    <% end %>
+
     <%= image_tag @pokemon_card.image, class: 'w-75', alt: @pokemon_card.name %>
   </div>
 

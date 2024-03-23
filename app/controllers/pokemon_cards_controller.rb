@@ -4,16 +4,6 @@ class PokemonCardsController < ApplicationController
 
     @pokemon_cards = @pokemon_cards.where("stock_quantity > 0")
 
-    if params[:search].present?
-      search_query = "%#{params[:search]}%"
-      @pokemon_cards = @pokemon_cards.where("pokemon_cards.name LIKE ? OR pokemon_cards.description LIKE ?", search_query, search_query)
-    end
-
-    if params[:type].present?
-      type = Type.find_by(name: params[:type])
-      @pokemon_cards = @pokemon_cards.joins(:types).where(types: { id: type.id }) if type
-    end
-
     if params[:filter].present?
       case params[:filter]
       when "new"
