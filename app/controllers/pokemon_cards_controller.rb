@@ -14,9 +14,9 @@ class PokemonCardsController < ApplicationController
     if params[:filter].present?
       case params[:filter]
       when "new"
-        @pokemon_cards = @pokemon_cards.where("created_at >= ?", 3.hour.ago)
+        @pokemon_cards = @pokemon_cards.where("created_at >= ?", 3.days.ago)
       when "recently_updated"
-        @pokemon_cards = @pokemon_cards.where("updated_at >= ? AND created_at < ?", 3.hour.ago, 3.hour.ago)
+        @pokemon_cards = @pokemon_cards.where("updated_at >= ? AND created_at < ?", 3.days.ago, 3.days.ago)
       end
     end
 

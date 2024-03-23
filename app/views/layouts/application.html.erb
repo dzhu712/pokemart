@@ -19,7 +19,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+        <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li>
               <%= link_to "Cards", pokemon_cards_path, class: "nav-link" %>
@@ -32,20 +32,24 @@
                 <% end %>
               </div>
             </li>
+            <li>
+              <%= link_to "About", abouts_path, class: "nav-link" %>
+            </li>
+            <li>
+              <%= link_to "Contact", contacts_path, class: "nav-link" %>
+            </li>
           </ul>
 
-          <form class="form-inline" action="<%= pokemon_cards_path %>">
+          <form class="form-inline flex-grow-1" action="<%= pokemon_cards_path %>">
             <div class="input-group">
-              <input type="text" class="form-control" name="search" placeholder="Search for Pokemon Card" aria-label="Search" value="<%= params[:search] %>">
+              <select class="form-select rounded-0 rounded-start flex-grow-0 w-auto" name="type">
+                <option value="" <%= "selected" if params[:type].blank? %>>All Types</option>
+                <% Type.all.each do |type| %>
+                  <option value="<%= type.name %>" <%= "selected" if params[:type] == type.name %>><%= type.name.capitalize %></option>
+                <% end %>
+              </select>
 
-              <div class="input-group-append">
-                <select class="form-select rounded-0" name="type">
-                  <option value="" <%= "selected" if params[:type].blank? %>>All Types</option>
-                  <% Type.all.each do |type| %>
-                    <option value="<%= type.name %>" <%= "selected" if params[:type] == type.name %>><%= type.name.capitalize %></option>
-                  <% end %>
-                </select>
-              </div>
+              <input type="text" class="form-control" name="search" placeholder="Search for Pokemon Card" aria-label="Search" value="<%= params[:search] %>">
 
               <button class="btn btn-success">Search</button>
             </div>
