@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :pokemon_cards, only: [:index, :show]
   resources :types, only: [:show]
 
-  resources :about_pages, only: [:index]
+  resources :abouts, only: [:index]
   resources :contacts, only: [:index]
 
   devise_for :admin_users, ActiveAdmin::Devise.config

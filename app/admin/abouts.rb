@@ -1,4 +1,4 @@
-ActiveAdmin.register AboutPage do
+ActiveAdmin.register About do
   permit_params :title, :content
 
   form do |f|

@@ -1,6 +1,6 @@
-class CreateAboutPages < ActiveRecord::Migration[7.1]
+class CreateAbouts < ActiveRecord::Migration[7.1]
   def change
-    create_table :about_pages do |t|
+    create_table :abouts do |t|
       t.string :title
       t.text :content
 
