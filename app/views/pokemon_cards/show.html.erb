@@ -1,18 +1,20 @@
 <h1 class="text-center mb-4"><%= @pokemon_card.name.capitalize %></h1>
 
-<div class="row justify-content-center g-4">
+<div class="row justify-content-center gap-4">
   <div class="col-md-4 text-center">
-    <%= image_tag @pokemon_card.image, class: 'img-responsive w-75', alt: @pokemon_card.name %>
+    <%= image_tag @pokemon_card.image, class: 'w-75', alt: @pokemon_card.name %>
   </div>
 
-  <div class="col-md-4 px-5">
-    <p>
-      <b>Type:</b>
-      <% types = @pokemon_card.types.map { |type| link_to(type.name, type_path(type)) } %>
-      <%= types.join(', ').html_safe %>
-    </p>
-    <p><b>Description:</b> <%= @pokemon_card.description.present? ? @pokemon_card.description : "N/A" %></p>
-    <p><b>Price:</b> $<%= '%.2f' % @pokemon_card.price %></p>
-    <p><b>Stock Quantity:</b> <%= @pokemon_card.stock_quantity %></p>
+  <div class="col-md-4 d-flex justify-content-center">
+    <div>
+      <p>
+        <b>Type:</b>
+        <% types = @pokemon_card.types.map { |type| link_to(type.name, type_path(type)) } %>
+        <%= types.join(', ').html_safe %>
+      </p>
+      <p><b>Description:</b> <%= @pokemon_card.description.present? ? @pokemon_card.description : "N/A" %></p>
+      <p><b>Price:</b> $<%= '%.2f' % @pokemon_card.price %></p>
+      <p><b>Stock Quantity:</b> <%= @pokemon_card.stock_quantity %></p>
+    </div>
   </div>
 </div>
