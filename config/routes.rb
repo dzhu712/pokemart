@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :pokemon_cards, only: [:index, :show]
   resources :types, only: [:show]
 
+  resources :search, only: [:index]
   resources :abouts, only: [:index]
   resources :contacts, only: [:index]
 

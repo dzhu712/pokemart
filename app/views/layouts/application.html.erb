@@ -40,7 +40,7 @@
             </li>
           </ul>
 
-          <form class="form-inline flex-grow-1" action="<%= pokemon_cards_path %>">
+          <form class="form-inline flex-grow-1" action="<%= search_index_path %>">
             <div class="input-group">
               <select class="form-select rounded-0 rounded-start flex-grow-0 w-auto" name="type">
                 <option value="" <%= "selected" if params[:type].blank? %>>All Types</option>
