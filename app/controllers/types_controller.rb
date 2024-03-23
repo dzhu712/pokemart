@@ -3,6 +3,8 @@ class TypesController < ApplicationController
     @type = Type.find(params[:id])
     @pokemon_cards = @type.pokemon_cards
 
+    @pokemon_cards = @pokemon_cards.where("stock_quantity > 0")
+
     if params[:filter].present?
       case params[:filter]
       when "new"
