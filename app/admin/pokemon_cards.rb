@@ -3,7 +3,7 @@ ActiveAdmin.register PokemonCard do
   permit_params :name, :description, :price, :stock_quantity, :image, type_ids: []
 
   form html: { enctype: "multipart/form-data" } do |f|
-    f.inputs "Pokemon Card Details" do
+    f.inputs do
       f.input :name
       f.input :description
       f.input :price
