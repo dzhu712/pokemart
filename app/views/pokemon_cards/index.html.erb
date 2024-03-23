@@ -1,17 +1,6 @@
 <h1 class="text-center mb-2">Pokemon Cards</h1>
 
-<form class="mb-4">
-  <div class="row justify-content-center">
-    <div class="col-md-2">
-      <label for="filter" class="form-label">Filter by:</label>
-      <select name="filter" onchange="this.form.submit()" class="form-select">
-        <option value="" <%= "selected" if params[:filter].blank? %>>No filter</option>
-        <option value="new" <%= "selected" if params[:filter] == "new" %>>New</option>
-        <option value="recently_updated" <%= "selected" if params[:filter] == "recently_updated" %>>Recently Updated</option>
-      </select>
-    </div>
-  </div>
-</form>
+<%= render partial: 'shared/pokemon_card_filter' %>
 
 <% if @pokemon_cards.any? %>
   <div class="row justify-content-center gy-4">
