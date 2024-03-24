@@ -26,13 +26,15 @@
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+        <div class="mb-3">
+          Currently waiting confirmation for:<br><%= resource.unconfirmed_email %>
+        </div>
       <% end %>
 
       <div class="mb-3">
         <%= f.label :password, class: "form-label" %>
-        <small class="form-text text-muted">(leave blank if you don't want to change it)</small>
         <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+        <small class="d-block form-text text-muted">(leave blank if you don't want to change it)</small>
       </div>
 
       <div class="mb-3">
@@ -42,8 +44,8 @@
 
       <div class="mb-3">
         <%= f.label :current_password, class: "form-label" %>
-        <small class="form-text text-muted">(we need your current password to confirm your changes)</small>
         <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
+        <small class="d-block form-text text-muted">(we need your current password to confirm your changes)</small>
       </div>
 
       <div class="mb-3 text-center">
