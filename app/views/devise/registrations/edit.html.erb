@@ -22,7 +22,7 @@
 
       <div class="mb-3">
         <%= f.label :province_id, class: "form-label" %>
-        <%= f.collection_select :province_id, Province.all, :id, :name, { prompt: "Select Province" }, { class: "form-select" } %>
+        <%= f.collection_select :province_id, Province.all, :id, :name, { include_blank: "No Province" }, { class: "form-select" } %>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
