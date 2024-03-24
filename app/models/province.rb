@@ -1,5 +1,6 @@
 class Province < ApplicationRecord
   has_many :tax_histories
+  has_many :provinces
 
   validates :name, presence: true
 

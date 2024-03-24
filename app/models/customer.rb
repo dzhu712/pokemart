@@ -6,6 +6,5 @@ class Customer < ApplicationRecord
 
   belongs_to :province
 
-  validates :username, presence: true
-  validates :address, presence: true
+  validates :username, presence: true, format: { with: /\A[a-zA-Z0-9_-]{3,15}\z/, message: "should be 3 to 15 characters long and can only contain letters, digits, underscores, and hyphens" }
 end
